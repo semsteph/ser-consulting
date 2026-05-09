@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+
 import {
   Mail,
   Phone,
@@ -12,6 +13,7 @@ import {
 // animations
 const containerVariants = {
   hidden: {},
+
   show: {
     transition: {
       staggerChildren: 0.18,
@@ -31,9 +33,9 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
+
     transition: {
       duration: 0.8,
-      
     },
   },
 };
@@ -72,31 +74,37 @@ export default function References() {
     >
       {/* glow background */}
       <div className="absolute top-0 left-0 w-80 h-80 bg-blue-500/10 blur-3xl rounded-full" />
+
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-green-500/10 blur-3xl rounded-full" />
 
       <div className="relative max-w-7xl mx-auto">
 
-        {/* TITRE */}
+        {/* HEADER */}
         <motion.div
           initial={{
             opacity: 0,
             y: 30,
           }}
+
           whileInView={{
             opacity: 1,
             y: 0,
           }}
+
           transition={{
             duration: 0.8,
-            ease: "easeOut",
           }}
+
           viewport={{ once: true }}
           className="text-center mb-20"
         >
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            transition={{
+              delay: 0.2,
+              duration: 0.5,
+            }}
             className="text-blue-600 font-semibold uppercase tracking-[4px] mb-4"
           >
             Références professionnelles
@@ -110,9 +118,9 @@ export default function References() {
           </h2>
 
           <p className="text-gray-600 mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
-            Des partenaires et collaborations qui témoignent
-            de notre expertise et de la confiance accordée
-            à SER Consulting.
+            Des partenaires et collaborations qui
+            témoignent de notre expertise et de
+            la confiance accordée à SER Consulting.
           </p>
         </motion.div>
 
@@ -127,21 +135,24 @@ export default function References() {
           {references.map((ref, i) => (
             <motion.div
               key={i}
+
               variants={cardVariants}
+
               whileHover={{
                 y: -10,
                 scale: 1.02,
               }}
+
               transition={{
                 duration: 0.3,
-                ease: "easeOut",
               }}
+
               className="group relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl overflow-hidden"
             >
               {/* hover glow */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-blue-500/5 to-green-500/10 transition duration-500" />
 
-              {/* top line */}
+              {/* top animated line */}
               <div className="absolute top-0 left-0 w-0 h-1 group-hover:w-full bg-gradient-to-r from-blue-600 to-green-500 transition-all duration-500" />
 
               {/* LOGO */}
@@ -151,9 +162,11 @@ export default function References() {
                     scale: 1.08,
                     rotate: 2,
                   }}
+
                   transition={{
                     duration: 0.3,
                   }}
+
                   className="relative w-24 h-24 rounded-2xl bg-gray-50 border border-gray-100 shadow-md p-4"
                 >
                   <Image
@@ -181,9 +194,13 @@ export default function References() {
 
               {/* INFOS */}
               <div className="relative z-10 space-y-5">
-                {/* contact */}
+
+                {/* CONTACT */}
                 <motion.div
                   whileHover={{ x: 4 }}
+                  transition={{
+                    duration: 0.2,
+                  }}
                   className="flex items-start gap-4"
                 >
                   <div className="p-3 rounded-xl bg-blue-100">
@@ -201,9 +218,12 @@ export default function References() {
                   </div>
                 </motion.div>
 
-                {/* phone */}
+                {/* PHONE */}
                 <motion.div
                   whileHover={{ x: 4 }}
+                  transition={{
+                    duration: 0.2,
+                  }}
                   className="flex items-start gap-4"
                 >
                   <div className="p-3 rounded-xl bg-green-100">
@@ -221,9 +241,12 @@ export default function References() {
                   </div>
                 </motion.div>
 
-                {/* email */}
+                {/* EMAIL */}
                 <motion.div
                   whileHover={{ x: 4 }}
+                  transition={{
+                    duration: 0.2,
+                  }}
                   className="flex items-start gap-4"
                 >
                   <div className="p-3 rounded-xl bg-red-100">

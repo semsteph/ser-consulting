@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+
 import {
   Building2,
   ShieldCheck,
@@ -11,6 +12,7 @@ import {
 // animations
 const containerVariants = {
   hidden: {},
+
   show: {
     transition: {
       staggerChildren: 0.18,
@@ -30,6 +32,7 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
+
     transition: {
       duration: 0.8,
     },
@@ -40,29 +43,43 @@ export default function Suppliers() {
   const suppliers = [
     {
       name: "NOLLET / FRANCO BELGE / REXEL",
+
       desc: "Matériels électriques",
+
       logo: "/suppliers/nollet.png",
+
       icon: Zap,
     },
 
     {
       name: "GDV / FRANCOFA",
+
       desc: "Contrôle d’accès",
+
       logo: "/suppliers/gdv.png",
+
       icon: ShieldCheck,
     },
 
     {
       name: "SCHNEIDER ELECTRIC",
+
       desc: "Formation / Habilitation",
+
       logo: "/suppliers/schneider.png",
+
       icon: Building2,
     },
 
     {
-      name: "FERMAX / URMET / COGELEC / NORALSY",
-      desc: "Interphonie & contrôle d’accès",
+      name:
+        "FERMAX / URMET / COGELEC / NORALSY",
+
+      desc:
+        "Interphonie & contrôle d’accès",
+
       logo: "/suppliers/fermax.png",
+
       icon: ShieldCheck,
     },
   ];
@@ -85,21 +102,26 @@ export default function Suppliers() {
             opacity: 0,
             y: 30,
           }}
+
           whileInView={{
             opacity: 1,
             y: 0,
           }}
+
           transition={{
             duration: 0.8,
-            ease: "easeOut",
           }}
+
           viewport={{ once: true }}
           className="text-center mb-20"
         >
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            transition={{
+              delay: 0.2,
+              duration: 0.5,
+            }}
             className="text-blue-600 font-semibold uppercase tracking-[4px] mb-4"
           >
             Partenaires techniques
@@ -134,15 +156,18 @@ export default function Suppliers() {
             return (
               <motion.div
                 key={i}
+
                 variants={itemVariants}
+
                 whileHover={{
                   y: -10,
                   scale: 1.03,
                 }}
+
                 transition={{
                   duration: 0.3,
-                  ease: "easeOut",
                 }}
+
                 className="group relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl overflow-hidden"
               >
                 {/* hover glow */}
@@ -158,9 +183,11 @@ export default function Suppliers() {
                       scale: 1.08,
                       rotate: 2,
                     }}
+
                     transition={{
                       duration: 0.3,
                     }}
+
                     className="relative w-28 h-28 rounded-2xl bg-gray-50 border border-gray-100 shadow-md p-4"
                   >
                     <Image
@@ -175,6 +202,7 @@ export default function Suppliers() {
 
                 {/* CONTENT */}
                 <div className="relative z-10 text-center">
+
                   {/* icon */}
                   <div className="flex justify-center mb-4">
                     <div className="p-3 rounded-xl bg-gradient-to-br from-blue-600 to-green-500 text-white shadow-lg">

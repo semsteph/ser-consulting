@@ -1,11 +1,18 @@
 "use client";
 
-import { ShieldCheck, Users, Award, Handshake } from "lucide-react";
+import {
+  ShieldCheck,
+  Users,
+  Award,
+  Handshake,
+} from "lucide-react";
+
 import { motion } from "framer-motion";
 
 // Animation container
 const containerVariants = {
   hidden: {},
+
   show: {
     transition: {
       staggerChildren: 0.25,
@@ -21,13 +28,14 @@ const cardVariants = {
     y: 60,
     filter: "blur(8px)",
   },
+
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
+
     transition: {
       duration: 0.9,
-      
     },
   },
 };
@@ -38,12 +46,13 @@ const textVariants = {
     opacity: 0,
     y: 20,
   },
+
   show: {
     opacity: 1,
     y: 0,
+
     transition: {
       duration: 0.7,
-      ease: "easeOut", // ✅ CORRECTION
     },
   },
 };
@@ -52,31 +61,50 @@ export default function WhyUs() {
   const items = [
     {
       title: "Qualité & Expertise",
+
       description:
         "Des ingénieurs qualifiés et une maîtrise technique dans les systèmes énergétiques.",
+
       icon: Award,
-      color: "from-blue-600 to-blue-800",
+
+      color:
+        "from-blue-600 to-blue-800",
     },
+
     {
       title: "Engagement",
+
       description:
         "Un accompagnement sérieux et personnalisé pour chaque projet.",
+
       icon: ShieldCheck,
-      color: "from-green-500 to-green-700",
+
+      color:
+        "from-green-500 to-green-700",
     },
+
     {
       title: "Confiance",
+
       description:
         "Une relation durable basée sur la transparence et la satisfaction client.",
+
       icon: Handshake,
-      color: "from-blue-500 to-green-500",
+
+      color:
+        "from-blue-500 to-green-500",
     },
+
     {
       title: "Proximité",
+
       description:
         "Une équipe disponible et à l’écoute pour répondre à vos besoins.",
+
       icon: Users,
-      color: "from-green-400 to-blue-500",
+
+      color:
+        "from-green-400 to-blue-500",
     },
   ];
 
@@ -87,6 +115,7 @@ export default function WhyUs() {
     >
       {/* background glow */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500/10 blur-3xl rounded-full" />
+
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-green-500/10 blur-3xl rounded-full" />
 
       <div className="relative max-w-7xl mx-auto">
@@ -99,6 +128,7 @@ export default function WhyUs() {
           variants={textVariants}
           className="text-center mb-20"
         >
+          {/* subtitle */}
           <motion.p
             variants={textVariants}
             className="text-blue-600 font-semibold uppercase tracking-[4px] mb-4"
@@ -106,6 +136,7 @@ export default function WhyUs() {
             Pourquoi nous choisir
           </motion.p>
 
+          {/* title */}
           <motion.h2
             variants={textVariants}
             className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight"
@@ -117,13 +148,15 @@ export default function WhyUs() {
             ?
           </motion.h2>
 
+          {/* description */}
           <motion.p
             variants={textVariants}
             className="max-w-2xl mx-auto text-gray-600 mt-6 text-lg leading-relaxed"
           >
-            Nous mettons notre expertise et notre passion au service
-            de solutions énergétiques fiables, durables et adaptées
-            à chaque besoin.
+            Nous mettons notre expertise et notre
+            passion au service de solutions
+            énergétiques fiables, durables et
+            adaptées à chaque besoin.
           </motion.p>
         </motion.div>
 
@@ -141,15 +174,18 @@ export default function WhyUs() {
             return (
               <motion.div
                 key={index}
+
                 variants={cardVariants}
+
                 whileHover={{
                   y: -10,
                   scale: 1.03,
                 }}
+
                 transition={{
                   duration: 0.35,
-                  ease: "easeOut",
                 }}
+
                 className="group relative bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl overflow-hidden"
               >
                 {/* glow hover */}
@@ -167,7 +203,11 @@ export default function WhyUs() {
                       rotate: 6,
                       scale: 1.08,
                     }}
-                    transition={{ duration: 0.3 }}
+
+                    transition={{
+                      duration: 0.3,
+                    }}
+
                     className={`p-5 rounded-2xl bg-gradient-to-br ${item.color} text-white shadow-lg`}
                   >
                     <Icon className="w-7 h-7" />

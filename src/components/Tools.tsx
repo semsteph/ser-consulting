@@ -37,7 +37,6 @@ const itemVariants = {
 
     transition: {
       duration: 0.8,
-      
     },
   },
 };
@@ -46,30 +45,51 @@ export default function Tools() {
   const tools = [
     {
       name: "AUTOCAD",
+
       icon: DraftingCompass,
-      desc: "Conception et dessin industriel assistés par ordinateur (CAO).",
-      color: "from-blue-600 to-blue-800",
+
+      desc:
+        "Conception et dessin industriel assistés par ordinateur (CAO).",
+
+      color:
+        "from-blue-600 to-blue-800",
     },
 
     {
       name: "CANECO BT",
+
       icon: Cpu,
-      desc: "Dimensionnement électrique conforme aux normes techniques.",
-      color: "from-green-500 to-green-700",
+
+      desc:
+        "Dimensionnement électrique conforme aux normes techniques.",
+
+      color:
+        "from-green-500 to-green-700",
     },
 
     {
       name: "DIALUX",
+
       icon: Lightbulb,
-      desc: "Études et simulations professionnelles d’éclairage.",
-      color: "from-blue-500 to-green-500",
+
+      desc:
+        "Études et simulations professionnelles d’éclairage.",
+
+      color:
+        "from-blue-500 to-green-500",
     },
 
     {
-      name: "RAPSODIE / XLPRO / ELCOM",
+      name:
+        "RAPSODIE / XLPRO / ELCOM",
+
       icon: Settings,
-      desc: "Conception, configuration et chiffrage d’armoires électriques.",
-      color: "from-green-400 to-blue-500",
+
+      desc:
+        "Conception, configuration et chiffrage d’armoires électriques.",
+
+      color:
+        "from-green-400 to-blue-500",
     },
   ];
 
@@ -91,14 +111,16 @@ export default function Tools() {
             opacity: 0,
             y: 30,
           }}
+
           whileInView={{
             opacity: 1,
             y: 0,
           }}
+
           transition={{
             duration: 0.8,
-            ease: "easeOut",
           }}
+
           viewport={{ once: true }}
           className="text-center mb-20"
         >
@@ -106,7 +128,10 @@ export default function Tools() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            transition={{
+              delay: 0.2,
+              duration: 0.5,
+            }}
             className="flex justify-center mb-5"
           >
             <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-600 to-green-500 text-white shadow-xl">
@@ -118,7 +143,10 @@ export default function Tools() {
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.25 }}
+            transition={{
+              delay: 0.25,
+              duration: 0.5,
+            }}
             className="text-blue-600 font-semibold uppercase tracking-[4px] mb-4"
           >
             Solutions & logiciels
@@ -155,15 +183,18 @@ export default function Tools() {
             return (
               <motion.div
                 key={i}
+
                 variants={itemVariants}
+
                 whileHover={{
                   y: -10,
                   scale: 1.03,
                 }}
+
                 transition={{
                   duration: 0.3,
-                  ease: "easeOut",
                 }}
+
                 className="group relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl overflow-hidden"
               >
                 {/* hover glow */}
@@ -186,9 +217,11 @@ export default function Tools() {
                       rotate: 5,
                       scale: 1.08,
                     }}
+
                     transition={{
                       duration: 0.3,
                     }}
+
                     className={`p-5 rounded-2xl bg-gradient-to-br ${tool.color} text-white shadow-xl`}
                   >
                     <Icon className="w-7 h-7" />
@@ -197,6 +230,7 @@ export default function Tools() {
 
                 {/* content */}
                 <div className="relative z-10 text-center">
+
                   {/* title */}
                   <h3 className="text-xl font-bold text-gray-900 leading-snug mb-4">
                     {tool.name}

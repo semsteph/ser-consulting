@@ -14,6 +14,7 @@ import { useState } from "react";
 // animations
 const container = {
   hidden: {},
+
   show: {
     transition: {
       staggerChildren: 0.2,
@@ -28,13 +29,14 @@ const item = {
     y: 40,
     filter: "blur(6px)",
   },
+
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
+
     transition: {
       duration: 0.8,
-      
     },
   },
 };
@@ -64,9 +66,11 @@ export default function Contact() {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
+
         headers: {
           "Content-Type": "application/json",
         },
+
         body: JSON.stringify(data),
       });
 
@@ -88,6 +92,7 @@ export default function Contact() {
     >
       {/* background glow */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500/10 blur-3xl rounded-full" />
+
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-green-500/10 blur-3xl rounded-full" />
 
       {/* animated background */}
@@ -99,7 +104,6 @@ export default function Contact() {
         transition={{
           duration: 8,
           repeat: Infinity,
-          ease: "easeInOut",
         }}
       />
 
@@ -158,7 +162,6 @@ export default function Contact() {
               }}
               transition={{
                 duration: 0.3,
-                ease: "easeOut",
               }}
               className="group flex items-center gap-5 p-5 bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100"
             >
@@ -186,7 +189,6 @@ export default function Contact() {
               }}
               transition={{
                 duration: 0.3,
-                ease: "easeOut",
               }}
               className="group flex items-center gap-5 p-5 bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100"
             >
@@ -214,7 +216,6 @@ export default function Contact() {
               }}
               transition={{
                 duration: 0.3,
-                ease: "easeOut",
               }}
               className="group flex items-center gap-5 p-5 bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100"
             >
@@ -265,7 +266,9 @@ export default function Contact() {
               whileFocus={{
                 scale: 1.02,
               }}
-              transition={{ duration: 0.2 }}
+              transition={{
+                duration: 0.2,
+              }}
               name="name"
               type="text"
               placeholder="Nom complet"
@@ -277,7 +280,9 @@ export default function Contact() {
               whileFocus={{
                 scale: 1.02,
               }}
-              transition={{ duration: 0.2 }}
+              transition={{
+                duration: 0.2,
+              }}
               name="email"
               type="email"
               placeholder="Adresse email"
@@ -289,7 +294,9 @@ export default function Contact() {
               whileFocus={{
                 scale: 1.02,
               }}
-              transition={{ duration: 0.2 }}
+              transition={{
+                duration: 0.2,
+              }}
               name="message"
               placeholder="Votre message..."
               required
@@ -330,6 +337,9 @@ export default function Contact() {
                   opacity: 1,
                   y: 0,
                 }}
+                transition={{
+                  duration: 0.3,
+                }}
                 className="text-center text-green-600 font-medium"
               >
                 ✅ Message envoyé avec succès !
@@ -349,9 +359,11 @@ export default function Contact() {
               }}
               href="https://wa.me/22967348868"
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-semibold shadow-lg transition"
             >
               <MessageCircle className="w-5 h-5" />
+
               Discuter sur WhatsApp
             </motion.a>
           </div>

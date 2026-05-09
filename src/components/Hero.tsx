@@ -8,6 +8,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 // animation container
 const container = {
   hidden: {},
+
   show: {
     transition: {
       staggerChildren: 0.2,
@@ -23,13 +24,14 @@ const item = {
     y: 40,
     filter: "blur(6px)",
   },
+
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
+
     transition: {
       duration: 0.9,
-      
     },
   },
 };
@@ -46,7 +48,6 @@ export default function Hero() {
         animate={{ scale: 1 }}
         transition={{
           duration: 8,
-          ease: "easeOut",
         }}
         className="absolute inset-0"
       >
@@ -217,7 +218,6 @@ export default function Hero() {
         transition={{
           delay: 1.5,
           duration: 0.8,
-          ease: "easeOut",
         }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white z-20"
       >
@@ -232,7 +232,6 @@ export default function Hero() {
           transition={{
             duration: 1.8,
             repeat: Infinity,
-            ease: "easeInOut",
           }}
           className="mt-2"
         >

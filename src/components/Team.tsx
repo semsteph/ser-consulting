@@ -38,7 +38,6 @@ const cardVariants = {
 
     transition: {
       duration: 0.8,
-      
     },
   },
 };
@@ -46,33 +45,53 @@ const cardVariants = {
 export default function Team() {
   const members = [
     {
-      title: "Ingénieur en énergies renouvelables",
+      title:
+        "Ingénieur en énergies renouvelables",
+
       icon: Cpu,
-      color: "from-blue-600 to-blue-800",
+
+      color:
+        "from-blue-600 to-blue-800",
     },
 
     {
-      title: "Technicien bureau d’études",
+      title:
+        "Technicien bureau d’études",
+
       icon: Wrench,
-      color: "from-green-500 to-green-700",
+
+      color:
+        "from-green-500 to-green-700",
     },
 
     {
-      title: "Spécialiste métreur / chiffreur",
+      title:
+        "Spécialiste métreur / chiffreur",
+
       icon: Calculator,
-      color: "from-blue-500 to-green-500",
+
+      color:
+        "from-blue-500 to-green-500",
     },
 
     {
-      title: "Spécialiste marketing",
+      title:
+        "Spécialiste marketing",
+
       icon: Megaphone,
-      color: "from-green-400 to-blue-500",
+
+      color:
+        "from-green-400 to-blue-500",
     },
 
     {
-      title: "Spécialiste en plan d’affaire",
+      title:
+        "Spécialiste en plan d’affaire",
+
       icon: Briefcase,
-      color: "from-blue-700 to-green-600",
+
+      color:
+        "from-blue-700 to-green-600",
     },
   ];
 
@@ -94,21 +113,27 @@ export default function Team() {
             opacity: 0,
             y: 30,
           }}
+
           whileInView={{
             opacity: 1,
             y: 0,
           }}
+
           transition={{
             duration: 0.8,
-            ease: "easeOut",
           }}
+
           viewport={{ once: true }}
           className="text-center mb-20"
         >
+          {/* icon */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            transition={{
+              delay: 0.2,
+              duration: 0.5,
+            }}
             className="flex justify-center mb-5"
           >
             <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-600 to-green-500 text-white shadow-xl">
@@ -116,15 +141,20 @@ export default function Team() {
             </div>
           </motion.div>
 
+          {/* subtitle */}
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.25 }}
+            transition={{
+              delay: 0.25,
+              duration: 0.5,
+            }}
             className="text-blue-600 font-semibold uppercase tracking-[4px] mb-4"
           >
             Notre équipe
           </motion.p>
 
+          {/* title */}
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
             Une équipe{" "}
             <span className="text-blue-600">
@@ -132,6 +162,7 @@ export default function Team() {
             </span>
           </h2>
 
+          {/* text */}
           <p className="text-gray-600 mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
             Des experts qualifiés réunis pour concevoir,
             piloter et réaliser des solutions énergétiques
@@ -153,15 +184,18 @@ export default function Team() {
             return (
               <motion.div
                 key={i}
+
                 variants={cardVariants}
+
                 whileHover={{
                   y: -10,
                   scale: 1.03,
                 }}
+
                 transition={{
                   duration: 0.3,
-                  ease: "easeOut",
                 }}
+
                 className="group relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl overflow-hidden"
               >
                 {/* hover glow */}
@@ -184,25 +218,31 @@ export default function Team() {
                       rotate: 5,
                       scale: 1.08,
                     }}
+
                     transition={{
                       duration: 0.3,
                     }}
+
                     className={`p-5 rounded-2xl bg-gradient-to-br ${member.color} text-white shadow-xl`}
                   >
                     <Icon className="w-7 h-7" />
                   </motion.div>
                 </div>
 
-                {/* title */}
+                {/* content */}
                 <div className="relative z-10 text-center">
+
+                  {/* title */}
                   <h3 className="text-xl font-bold text-gray-900 leading-snug mb-4">
                     {member.title}
                   </h3>
 
+                  {/* separator */}
                   <div
                     className={`w-16 h-1 bg-gradient-to-r ${member.color} mx-auto rounded-full mb-4`}
                   />
 
+                  {/* text */}
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Expertise technique, accompagnement
                     stratégique et solutions adaptées

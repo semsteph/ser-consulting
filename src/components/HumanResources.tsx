@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import {
   Cpu,
   Wrench,
@@ -13,6 +14,7 @@ import {
 // animations
 const containerVariants = {
   hidden: {},
+
   show: {
     transition: {
       staggerChildren: 0.18,
@@ -32,9 +34,9 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
+
     transition: {
       duration: 0.8,
-      
     },
   },
 };
@@ -45,18 +47,22 @@ export default function HumanResources() {
       name: "Ingénieur en énergies renouvelables",
       icon: Cpu,
     },
+
     {
       name: "Technicien bureau d’études",
       icon: Wrench,
     },
+
     {
       name: "Spécialiste métreur / chiffreur",
       icon: Calculator,
     },
+
     {
       name: "Spécialiste marketing",
       icon: Megaphone,
     },
+
     {
       name: "Spécialiste en plan d’affaire",
       icon: Briefcase,
@@ -65,9 +71,13 @@ export default function HumanResources() {
 
   const missions = [
     "Études techniques et dimensionnement énergétique",
+
     "Conception des plans et intégration des systèmes",
+
     "Veille technologique et assistance technique",
+
     "Diagnostics et accompagnement des entreprises",
+
     "Formation en développement durable et gestion énergétique",
   ];
 
@@ -78,6 +88,7 @@ export default function HumanResources() {
     >
       {/* glow backgrounds */}
       <div className="absolute top-0 left-0 w-80 h-80 bg-blue-500/10 blur-3xl rounded-full" />
+
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-green-500/10 blur-3xl rounded-full" />
 
       <div className="relative max-w-7xl mx-auto">
@@ -88,21 +99,26 @@ export default function HumanResources() {
             opacity: 0,
             y: 30,
           }}
+
           whileInView={{
             opacity: 1,
             y: 0,
           }}
+
           transition={{
             duration: 0.8,
-            ease: "easeOut",
           }}
+
           viewport={{ once: true }}
           className="text-center mb-20"
         >
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            transition={{
+              delay: 0.2,
+              duration: 0.5,
+            }}
             className="text-blue-600 font-semibold uppercase tracking-[4px] mb-4"
           >
             Organisation & expertise
@@ -139,9 +155,11 @@ export default function HumanResources() {
               whileHover={{
                 y: -5,
               }}
+
               transition={{
                 duration: 0.3,
               }}
+
               className="relative bg-white p-8 rounded-3xl shadow-sm hover:shadow-2xl border border-gray-100 overflow-hidden"
             >
               {/* glow */}
@@ -190,9 +208,11 @@ export default function HumanResources() {
               whileHover={{
                 y: -5,
               }}
+
               transition={{
                 duration: 0.3,
               }}
+
               className="relative bg-gradient-to-br from-blue-50 to-green-50 p-8 rounded-3xl border border-blue-100 overflow-hidden"
             >
               <div className="relative z-10">
@@ -204,19 +224,22 @@ export default function HumanResources() {
                   {missions.map((mission, index) => (
                     <motion.div
                       key={index}
+
                       initial={{
                         opacity: 0,
                         x: -20,
                       }}
+
                       whileInView={{
                         opacity: 1,
                         x: 0,
                       }}
+
                       transition={{
                         delay: index * 0.1,
                         duration: 0.5,
-                        ease: "easeOut",
                       }}
+
                       viewport={{ once: true }}
                       className="flex items-start gap-3"
                     >
@@ -246,15 +269,18 @@ export default function HumanResources() {
               return (
                 <motion.div
                   key={i}
+
                   variants={itemVariants}
+
                   whileHover={{
                     y: -8,
                     scale: 1.03,
                   }}
+
                   transition={{
                     duration: 0.3,
-                    ease: "easeOut",
                   }}
+
                   className="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl border border-gray-100 overflow-hidden"
                 >
                   {/* glow */}
@@ -270,9 +296,11 @@ export default function HumanResources() {
                         rotate: 6,
                         scale: 1.08,
                       }}
+
                       transition={{
                         duration: 0.3,
                       }}
+
                       className="p-5 rounded-2xl bg-gradient-to-br from-blue-600 to-green-500 text-white shadow-lg"
                     >
                       <Icon className="w-7 h-7" />
