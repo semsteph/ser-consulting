@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight, ChevronDown } from "lucide-react";
 
 // animation container
 const container = {
@@ -27,7 +29,7 @@ const item = {
     filter: "blur(0px)",
     transition: {
       duration: 0.9,
-      ease: [0.25, 0.8, 0.25, 1],
+      ease: "easeOut", // ✅ CORRECTION
     },
   },
 };
@@ -35,89 +37,208 @@ const item = {
 export default function Hero() {
   return (
     <section
-      id="home" // ✅ IMPORTANT POUR NAVBAR
-      className="relative h-[90vh] flex items-center justify-center text-center text-white overflow-hidden"
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-
-      {/* IMAGE AVEC ZOOM LENT */}
+      {/* IMAGE BACKGROUND */}
       <motion.div
-        initial={{ scale: 1.1 }}
+        initial={{ scale: 1.15 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 6, ease: "easeOut" }}
+        transition={{
+          duration: 8,
+          ease: "easeOut",
+        }}
         className="absolute inset-0"
       >
         <Image
           src="/oser.png"
-          alt="énergie solaire"
+          alt="SER Consulting"
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
       </motion.div>
 
-      {/* OVERLAY PREMIUM */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/40" />
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/65 to-black/50" />
 
-      {/* CONTENU */}
+      {/* glow effects */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-500/20 blur-3xl rounded-full" />
+
+      {/* CONTENT */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 px-6 max-w-4xl"
+        className="relative z-10 max-w-6xl mx-auto px-6 text-center"
       >
-
-        {/* TITRE */}
-        <motion.h1
-          variants={item}
-          className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
-        >
-          Votre partenaire en énergie durable
-        </motion.h1>
-
-        {/* TEXTE */}
-        <motion.p
-          variants={item}
-          className="text-lg md:text-xl text-gray-200 mb-8"
-        >
-          SER Consulting accompagne les entreprises et ONG dans la conception,
-          l’installation et l’optimisation de solutions énergétiques
-          renouvelables performantes.
-        </motion.p>
-
-        {/* BOUTONS */}
+        {/* badge */}
         <motion.div
           variants={item}
-          className="flex flex-col sm:flex-row justify-center gap-4"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg font-semibold transition shadow-lg"
-          >
-            Demander un devis
-          </motion.button>
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-700 transition"
+          <span className="text-sm md:text-base text-white/90 font-medium">
+            Solutions énergétiques durables & innovantes
+          </span>
+        </motion.div>
+
+        {/* TITLE */}
+        <motion.h1
+          variants={item}
+          className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight mb-8"
+        >
+          Votre partenaire en{" "}
+          <span className="text-green-400">
+            énergie durable
+          </span>
+        </motion.h1>
+
+        {/* TEXT */}
+        <motion.p
+          variants={item}
+          className="max-w-3xl mx-auto text-lg md:text-2xl text-gray-200 leading-relaxed mb-10"
+        >
+          SER Consulting accompagne les entreprises,
+          ONG et particuliers dans la conception,
+          l’installation et l’optimisation de solutions
+          énergétiques renouvelables performantes.
+        </motion.p>
+
+        {/* BUTTONS */}
+        <motion.div
+          variants={item}
+          className="flex flex-col sm:flex-row justify-center items-center gap-5"
+        >
+          {/* devis */}
+          <motion.div
+            whileHover={{
+              scale: 1.05,
+              y: -3,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            transition={{
+              duration: 0.2,
+            }}
           >
-            Nos services
-          </motion.button>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-2xl transition"
+            >
+              Demander un devis
+
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
+            </Link>
+          </motion.div>
+
+          {/* services */}
+          <motion.div
+            whileHover={{
+              scale: 1.05,
+              y: -3,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            transition={{
+              duration: 0.2,
+            }}
+          >
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-3 border border-white/40 bg-white/10 backdrop-blur-md hover:bg-white hover:text-blue-700 text-white px-8 py-4 rounded-2xl font-semibold transition"
+            >
+              Découvrir nos services
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* stats */}
+        <motion.div
+          variants={container}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
+        >
+          {[
+            {
+              number: "2022",
+              label: "Création",
+            },
+            {
+              number: "100%",
+              label: "Énergie durable",
+            },
+            {
+              number: "24/7",
+              label: "Accompagnement",
+            },
+            {
+              number: "Pro",
+              label: "Expertise technique",
+            },
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              variants={item}
+              whileHover={{
+                y: -5,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+              className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-6"
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                {stat.number}
+              </h3>
+
+              <p className="text-gray-300 text-sm md:text-base">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
         </motion.div>
       </motion.div>
 
-      {/* INDICATEUR SCROLL (bonus pro) */}
+      {/* SCROLL INDICATOR */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-6 flex flex-col items-center text-white text-sm"
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          delay: 1.5,
+          duration: 0.8,
+          ease: "easeOut",
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white z-20"
       >
-        <span>Scroll</span>
-        <div className="w-[2px] h-8 bg-white mt-2 animate-pulse" />
-      </motion.div>
+        <span className="text-sm tracking-[3px] uppercase text-white/80">
+          Scroll
+        </span>
 
+        <motion.div
+          animate={{
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 1.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="mt-2"
+        >
+          <ChevronDown className="w-6 h-6 text-white/80" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

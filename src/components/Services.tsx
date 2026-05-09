@@ -32,12 +32,12 @@ const item = {
     filter: "blur(0px)",
     transition: {
       duration: 0.8,
-      ease: [0.25, 0.8, 0.25, 1],
+      ease: "easeOut", // ✅ CORRECTION
     },
   },
 };
 
-// 🔥 animation texte mot par mot
+// animation texte mot par mot
 const textContainer = {
   hidden: {},
   show: {
@@ -57,6 +57,7 @@ const word = {
     y: 0,
     transition: {
       duration: 0.3,
+      ease: "easeOut", // ✅ CORRECTION
     },
   },
 };
@@ -64,7 +65,12 @@ const word = {
 // composant texte animé
 function AnimatedText({ text }: { text: string }) {
   return (
-    <motion.span variants={textContainer} initial="hidden" animate="show">
+    <motion.span
+      variants={textContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+    >
       {text.split(" ").map((wordText, index) => (
         <motion.span
           key={index}
@@ -109,23 +115,26 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bg-gray-50 overflow-hidden"
+      className="bg-gradient-to-b from-gray-50 to-white overflow-hidden py-24"
     >
-
-      {/* 🔷 IMAGE + TEXTE */}
+      {/* IMAGE + TEXTE */}
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center"
+        className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center"
       >
-        
         {/* IMAGE */}
         <motion.div
           variants={item}
-          className="w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-lg group"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.4 }}
+          className="relative w-full h-[320px] md:h-[450px] rounded-3xl overflow-hidden shadow-2xl group"
         >
+          {/* glow */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-green-500/10 z-10" />
+
           <img
             src="/images.png"
             alt="Énergie renouvelable"
@@ -134,37 +143,70 @@ export default function Services() {
         </motion.div>
 
         {/* TEXTE */}
-        <motion.div variants={item} className="space-y-4">
-
-          <p className="text-green-600 font-semibold uppercase tracking-wide">
-            <AnimatedText text="Nos services" />
-          </p>
-
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
-            <AnimatedText text="Des solutions énergétiques durables" />
-          </h2>
-
-          <p className="text-gray-600">
-            <AnimatedText text="Nous accompagnons les entreprises et particuliers dans la conception et la mise en œuvre de solutions énergétiques modernes, efficaces et durables." />
-          </p>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition shadow-md"
+        <motion.div
+          variants={item}
+          className="space-y-6"
+        >
+          <motion.p
+            variants={item}
+            className="text-green-600 font-semibold uppercase tracking-[4px]"
           >
-            Demander un devis
-          </motion.button>
+            <AnimatedText text="Nos services" />
+          </motion.p>
+
+          <motion.h2
+            variants={item}
+            className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight"
+          >
+            <AnimatedText text="Des solutions énergétiques modernes et durables" />
+          </motion.h2>
+
+          <motion.p
+            variants={item}
+            className="text-gray-600 text-lg leading-relaxed"
+          >
+            <AnimatedText text="Nous accompagnons les entreprises, ONG et particuliers dans la conception et la mise en œuvre de solutions énergétiques performantes, fiables et adaptées à leurs besoins." />
+          </motion.p>
+
+          {/* BUTTONS */}
+          <motion.div
+            variants={item}
+            className="flex flex-wrap gap-4 pt-2"
+          >
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                y: -2,
+              }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              className="bg-green-600 hover:bg-green-700 text-white px-7 py-3 rounded-full font-semibold shadow-lg transition"
+            >
+              Demander un devis
+            </motion.button>
+
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                y: -2,
+              }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              className="border border-gray-300 hover:border-blue-600 hover:text-blue-600 px-7 py-3 rounded-full font-semibold text-gray-700 transition"
+            >
+              Découvrir nos services
+            </motion.button>
+          </motion.div>
         </motion.div>
       </motion.div>
 
-      {/* 🔷 CARDS */}
+      {/* CARDS */}
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="max-w-6xl mx-auto px-6 pb-20"
+        className="max-w-7xl mx-auto px-6 mt-24"
       >
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => {
@@ -174,20 +216,33 @@ export default function Services() {
               <motion.div
                 key={index}
                 variants={item}
-                whileHover={{ y: -8, scale: 1.03 }}
-                className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-2xl transition"
+                whileHover={{
+                  y: -10,
+                  scale: 1.03,
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut",
+                }}
+                className="group relative bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl overflow-hidden"
               >
-                <div className="flex justify-center mb-6">
-                  <div className="bg-green-100 p-4 rounded-full group-hover:bg-green-600 transition duration-300">
+                {/* glow hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-blue-500/5 to-green-500/10 transition duration-500" />
+
+                {/* icon */}
+                <div className="flex justify-center mb-6 relative z-10">
+                  <div className="bg-green-100 p-5 rounded-2xl group-hover:bg-green-600 transition duration-300 shadow-md">
                     <Icon className="w-8 h-8 text-green-600 group-hover:text-white transition" />
                   </div>
                 </div>
 
-                <h3 className="text-xl font-semibold mb-3 text-gray-800 text-center">
+                {/* title */}
+                <h3 className="text-xl font-bold mb-4 text-gray-900 text-center relative z-10">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-600 text-sm text-center leading-relaxed">
+                {/* description */}
+                <p className="text-gray-600 text-sm text-center leading-relaxed relative z-10">
                   {service.description}
                 </p>
               </motion.div>
@@ -195,7 +250,6 @@ export default function Services() {
           })}
         </div>
       </motion.div>
-
     </section>
   );
 }
