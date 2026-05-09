@@ -38,7 +38,7 @@ const cardVariants = {
 
     transition: {
       duration: 0.8,
-      ease: "easeOut", // ✅ CORRECTION
+      
     },
   },
 };

@@ -1,28 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Settings, Sun, Flame, BarChart3, Zap, BookOpen } from "lucide-react";
+
+import {
+  Settings,
+  BookOpen,
+  CheckCircle2,
+  Activity,
+} from "lucide-react";
 
 // animations
 const containerVariants = {
   hidden: {},
+
   show: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.18,
       delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 40, filter: "blur(6px)" },
+  hidden: {
+    opacity: 0,
+    y: 40,
+    filter: "blur(6px)",
+  },
+
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
+
     transition: {
       duration: 0.8,
-      ease: [0.25, 0.8, 0.25, 1],
     },
   },
 };
@@ -33,6 +45,7 @@ export default function Activities() {
       title: "Études techniques",
       icon: Settings,
       color: "from-blue-600 to-blue-800",
+
       items: [
         "Élaboration d’offres techniques (appels d’offre / projets)",
         "Études d’installation solaire photovoltaïque",
@@ -42,10 +55,12 @@ export default function Activities() {
         "Analyse de profil de charge et efficacité énergétique",
       ],
     },
+
     {
       title: "Formation & accompagnement",
       icon: BookOpen,
       color: "from-green-500 to-green-700",
+
       items: [
         "Formation en planification de projet",
         "Formation en reporting",
@@ -58,63 +73,161 @@ export default function Activities() {
   return (
     <section
       id="activities"
-      className="py-24 px-6 bg-gradient-to-b from-white to-gray-100"
+      className="relative py-28 px-6 bg-gradient-to-b from-white via-gray-50 to-gray-100 overflow-hidden"
     >
-      {/* TITRE */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
-          Nos <span className="text-blue-600">domaines d’activités</span>
-        </h2>
-      </motion.div>
+      {/* glow backgrounds */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-blue-500/10 blur-3xl rounded-full" />
 
-      {/* GRID */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto"
-      >
-        {activities.map((activity, i) => {
-          const Icon = activity.icon;
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-green-500/10 blur-3xl rounded-full" />
 
-          return (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition border"
-            >
-              {/* HEADER */}
-              <div className="flex items-center gap-4 mb-6">
+      <div className="relative max-w-7xl mx-auto">
+
+        {/* HEADER */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.8,
+          }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          {/* icon */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="flex justify-center mb-5"
+          >
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-600 to-green-500 text-white shadow-xl">
+              <Activity className="w-7 h-7" />
+            </div>
+          </motion.div>
+
+          {/* subtitle */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.25 }}
+            className="text-blue-600 font-semibold uppercase tracking-[4px] mb-4"
+          >
+            Domaines d’intervention
+          </motion.p>
+
+          {/* title */}
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            Nos{" "}
+            <span className="text-blue-600">
+              domaines d’activités
+            </span>
+          </h2>
+
+          {/* description */}
+          <p className="text-gray-600 mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
+            SER Consulting accompagne les entreprises,
+            collectivités et organisations dans la
+            réalisation de projets énergétiques
+            modernes et durables.
+          </p>
+        </motion.div>
+
+        {/* GRID */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid lg:grid-cols-2 gap-10"
+        >
+          {activities.map((activity, i) => {
+            const Icon = activity.icon;
+
+            return (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.01,
+                }}
+                transition={{
+                  duration: 0.3,
+                }}
+                className="group relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl overflow-hidden"
+              >
+                {/* hover glow */}
                 <div
-                  className={`p-3 rounded-full bg-gradient-to-br ${activity.color} text-white`}
-                >
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {activity.title}
-                </h3>
-              </div>
+                  className={`absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br ${activity.color} transition duration-500`}
+                  style={{
+                    opacity: 0.04,
+                  }}
+                />
 
-              {/* LIST */}
-              <ul className="space-y-3 text-gray-600 text-sm">
-                {activity.items.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-green-500">✔</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          );
-        })}
-      </motion.div>
+                {/* top animated line */}
+                <div
+                  className={`absolute top-0 left-0 w-0 h-1 group-hover:w-full bg-gradient-to-r ${activity.color} transition-all duration-500`}
+                />
+
+                {/* HEADER */}
+                <div className="relative z-10 flex items-center gap-5 mb-8">
+                  <motion.div
+                    whileHover={{
+                      rotate: 5,
+                      scale: 1.08,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                    }}
+                    className={`p-5 rounded-2xl bg-gradient-to-br ${activity.color} text-white shadow-xl`}
+                  >
+                    <Icon className="w-7 h-7" />
+                  </motion.div>
+
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      {activity.title}
+                    </h3>
+
+                    <div
+                      className={`w-16 h-1 bg-gradient-to-r ${activity.color} rounded-full mt-3`}
+                    />
+                  </div>
+                </div>
+
+                {/* LIST */}
+                <ul className="relative z-10 space-y-4">
+                  {activity.items.map((item, idx) => (
+                    <motion.li
+                      key={idx}
+                      whileHover={{ x: 4 }}
+                      className="flex items-start gap-4 text-gray-700"
+                    >
+                      <div className="mt-0.5">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                      </div>
+
+                      <span className="leading-relaxed">
+                        {item}
+                      </span>
+                    </motion.li>
+                  ))}
+                </ul>
+
+                {/* decorative blur */}
+                <div
+                  className={`absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-gradient-to-br ${activity.color} blur-3xl opacity-10`}
+                />
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
     </section>
   );
 }

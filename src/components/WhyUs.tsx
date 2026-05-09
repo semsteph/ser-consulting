@@ -27,7 +27,7 @@ const cardVariants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.9,
-      ease: "easeOut", // ✅ CORRECTION
+      
     },
   },
 };

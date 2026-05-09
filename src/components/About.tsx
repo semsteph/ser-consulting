@@ -27,7 +27,7 @@ const itemVariants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.8,
-      ease: "easeOut", // ✅ CORRECTION
+    
     },
   },
 };

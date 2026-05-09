@@ -37,7 +37,7 @@ const itemVariants = {
 
     transition: {
       duration: 0.8,
-      ease: "easeOut", // ✅ CORRECTION
+      
     },
   },
 };
