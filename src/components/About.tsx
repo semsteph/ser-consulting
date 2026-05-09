@@ -6,6 +6,7 @@ import { Leaf, Lightbulb, Target, Users } from "lucide-react";
 // Animation container
 const containerVariants = {
   hidden: {},
+
   show: {
     transition: {
       staggerChildren: 0.2,
@@ -21,13 +22,14 @@ const itemVariants = {
     y: 40,
     filter: "blur(6px)",
   },
+
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
+
     transition: {
       duration: 0.8,
-    
     },
   },
 };
@@ -39,16 +41,19 @@ export default function About() {
       icon: Lightbulb,
       color: "from-blue-600 to-blue-800",
     },
+
     {
       title: "Durabilité",
       icon: Leaf,
       color: "from-green-500 to-green-700",
     },
+
     {
       title: "Performance",
       icon: Target,
       color: "from-blue-500 to-green-500",
     },
+
     {
       title: "Proximité",
       icon: Users,
@@ -69,7 +74,6 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.8,
-            ease: "easeOut",
           }}
           viewport={{ once: true }}
           className="text-center mb-16"
@@ -85,7 +89,9 @@ export default function About() {
 
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
             À propos de{" "}
-            <span className="text-blue-600">SER Consulting</span>
+            <span className="text-blue-600">
+              SER Consulting
+            </span>
           </h2>
         </motion.div>
 
@@ -161,7 +167,6 @@ export default function About() {
                   }}
                   transition={{
                     duration: 0.3,
-                    ease: "easeOut",
                   }}
                   className="group relative bg-white p-7 rounded-2xl shadow-sm hover:shadow-2xl transition border border-gray-100 overflow-hidden"
                 >
